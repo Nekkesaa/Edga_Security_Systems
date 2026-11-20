@@ -2,12 +2,233 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>edga-security</title>
+    <meta name="description" content="Edga Security Systems: trusted experts in guarding, alarms, CCTV installation and security consulting in Nairobi and across Kenya." />
+    <title>Edga Security Systems</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header class="site-header">
+      <a href="#hero" class="logo">
+        <img src="/logo-crest.png" alt="" class="logo-img" />
+        <span>Edga Security Systems</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#services">Services</a>
+        <a href="#partners">Partners</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main>
+      <section id="hero">
+        <h1 class="sr-only">Edga Security Systems</h1>
+
+        <div class="hero-title">
+          <span class="line" aria-hidden="true">Edga</span>
+
+          <div class="camera">
+            <button class="camera-btn" type="button" aria-expanded="false" aria-controls="areas-panel">
+              <span class="camera-dot"></span>
+              <span class="camera-label">Camera here</span>
+              <span class="camera-hint">See areas we serve</span>
+            </button>
+
+            <div class="areas-panel" id="areas-panel">
+              <h3>Areas we serve</h3>
+              <ul>
+                <li>Nairobi</li>
+                <li>Kitengela</li>
+                <li>Athi River</li>
+                <li>Machakos</li>
+                <li>Kitale</li>
+                <li>Bungoma</li>
+                <li>Kimilili</li>
+                <li>Busia</li>
+              </ul>
+            </div>
+          </div>
+
+          <span class="line" aria-hidden="true">Security Systems</span>
+        </div>
+
+        <p class="hero-tagline">Trusted experts in guarding, alarms, CCTV installation and security consulting.</p>
+
+        <a href="#contact" class="btn">Get a quote</a>
+      </section>
+
+      <section id="services">
+        <div class="section-head">
+          <h2>Our Services</h2>
+          <p>Reliable protection for homes, businesses and events.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">01</div>
+            <h3>Guarding</h3>
+            <p>Vetted, trained and uniformed guards for homes, businesses and sites, day and night.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">02</div>
+            <h3>Events Security</h3>
+            <p>Access control and guest safety for events of any size.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">03</div>
+            <h3>Electric Fencing &amp; Razor Wire</h3>
+            <p>Professional installation of perimeter barriers that deter unauthorised entry.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">04</div>
+            <h3>CCTV &amp; Access Control</h3>
+            <p>Cameras and entry control designed around your premises, with remote viewing over the internet.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">05</div>
+            <h3>Alarm Systems</h3>
+            <p>Wireless intruder alarms with tamper protection, installed after a survey of your premises.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">06</div>
+            <h3>Security Consultancy</h3>
+            <p>Site assessments and practical advice on reducing your security risks.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="partners">
+        <div class="section-head">
+          <h2>Our Partners</h2>
+          <p>Businesses and organisations that trust Edga to keep them safe.</p>
+        </div>
+
+        <div class="partners-grid">
+          <div class="partner-card">Partner One</div>
+          <div class="partner-card">Partner Two</div>
+          <div class="partner-card">Partner Three</div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <h2>About Edga</h2>
+          <p>Trusted security for homes, businesses and events across Kenya.</p>
+        </div>
+
+        <div class="about-story">
+          <p>
+            Edga Security Systems is a registered Kenyan security company, established in
+            August 2015. We provide trained guards, alarms, CCTV, access control and
+            electric fencing, with each solution built around the client's needs.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <h3>Our Mission</h3>
+            <p>To answer the security concerns of businesses and individuals with disciplined, well-trained guards backed by modern technology, at competitive prices.</p>
+          </article>
+
+          <article class="about-card">
+            <h3>Our Vision</h3>
+            <p>Cost-effective security that never sacrifices quality, with services that are simple, transparent and within reach of every client.</p>
+          </article>
+
+          <article class="about-card">
+            <h3>Our Values</h3>
+            <p>Professionalism, customer focus, teamwork and continuous improvement.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <h2>Contact Us</h2>
+          <p>Tell us what you need protected and we'll get back to you.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Work with us</h3>
+            <p>Request a quote for guarding, CCTV, alarms or fencing.</p>
+
+            <form class="contact-form">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="tel" name="phone" placeholder="Phone number" required />
+              <input type="text" name="location" placeholder="Where do you need the service?" required />
+
+              <fieldset class="service-picker">
+                <legend>What do you need?</legend>
+                <label><input type="checkbox" name="services" value="Guarding" /> Guarding</label>
+                <label><input type="checkbox" name="services" value="Events Security" /> Events Security</label>
+                <label><input type="checkbox" name="services" value="Fencing and Razor Wire" /> Fencing &amp; Razor Wire</label>
+                <label><input type="checkbox" name="services" value="CCTV and Access Control" /> CCTV &amp; Access</label>
+                <label><input type="checkbox" name="services" value="Alarm Systems" /> Alarm Systems</label>
+                <label><input type="checkbox" name="services" value="Security Consultancy" /> Consultancy</label>
+              </fieldset>
+
+              <textarea name="message" rows="3" placeholder="Anything else we should know? (number of guards, shifts, size of site)"></textarea>
+              <button type="submit" class="btn">Request a quote</button>
+              <p class="form-note">Our price depends on your site and needs. We'll reply with a quote.</p>
+            </form>
+          </div>
+
+          <div class="contact-card contact-details">
+            <h3>Find us</h3>
+            <p>Eastern Bypass Road, next to Family Bank, Nairobi</p>
+            <p>Phone: <a href="tel:+254722751700">0722 751 700</a> / <a href="tel:+254202213320">020 2213320</a></p>
+            <p>Email: <a href="mailto:edgaserv@yahoo.com">edgaserv@yahoo.com</a></p>
+            <a href="https://wa.me/254722751700" class="btn" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+
+          <div class="contact-card">
+            <h3>Work for us</h3>
+            <p>We're growing and always looking for trained, reliable people to join the team.</p>
+            <a href="mailto:edgaserv@yahoo.com?subject=Job%20application" class="btn btn-outline">Apply now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <img src="/logo-crest.png" alt="" class="logo-img" />
+            <span>Edga</span>
+          </a>
+          <p>Trusted experts in guarding, alarms, CCTV installation and security consulting.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick links</h4>
+          <a href="#services">Services</a>
+          <a href="#partners">Partners</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Eastern Bypass Road, next to Family Bank, Nairobi</p>
+          <p>0712311250 / 020 2213320</p>
+          <p>edgaserv@yahoo.com</p>
+        </div>
+      </div>
+
+      <p class="footer-copy">&copy; <span id="year">2026</span> Edga Security Systems. All rights reserved.</p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

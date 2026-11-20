@@ -1,60 +1,71 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import "@fontsource-variable/sora";
+import "@fontsource-variable/inter";
+import "./style.css";
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+/* Mobile menu */
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("#nav");
 
-<div class="ticks"></div>
+function setMenu(open) {
+  nav.classList.toggle("open", open);
+  toggle.classList.toggle("open", open);
+  toggle.setAttribute("aria-expanded", open);
+  toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  document.body.classList.toggle("menu-open", open);
+}
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+toggle.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+nav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => setMenu(false));
+});
 
-setupCounter(document.querySelector('#counter'))
+/* Footer year */
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
+
+/* Camera and areas panel */
+const camera = document.querySelector(".camera");
+const cameraBtn = document.querySelector(".camera-btn");
+
+function setAreas(open) {
+  camera.classList.toggle("show-areas", open);
+  cameraBtn.setAttribute("aria-expanded", open);
+}
+
+cameraBtn.addEventListener("click", () => {
+  setAreas(!camera.classList.contains("show-areas"));
+});
+
+document.addEventListener("click", (e) => {
+  if (!camera.contains(e.target)) setAreas(false);
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") setAreas(false);
+});
+
+/* Hero reveal: opens on load and again whenever you return to the top */
+const hero = document.querySelector("#hero");
+const heroTitle = document.querySelector(".hero-title");
+let firstOpen = true;
+let openTimer;
+
+const heroObserver = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      openTimer = setTimeout(
+        () => heroTitle.classList.add("is-open"),
+        firstOpen ? 800 : 200
+      );
+      firstOpen = false;
+    } else {
+      clearTimeout(openTimer);
+      heroTitle.classList.remove("is-open");
+      setAreas(false);
+    }
+  },
+  { threshold: 0.4 }
+);
+
+heroObserver.observe(hero);
