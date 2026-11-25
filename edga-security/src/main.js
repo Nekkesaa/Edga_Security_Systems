@@ -24,28 +24,28 @@ nav.querySelectorAll("a").forEach((link) => {
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
-/* Camera and areas panel */
-const camera = document.querySelector(".camera");
-const cameraBtn = document.querySelector(".camera-btn");
+/* Areas we serve (opens over the hero image) */
+const reveal = document.querySelector(".reveal");
+const revealBtn = document.querySelector(".reveal-btn");
 
 function setAreas(open) {
-  camera.classList.toggle("show-areas", open);
-  cameraBtn.setAttribute("aria-expanded", open);
+  reveal.classList.toggle("show-areas", open);
+  revealBtn.setAttribute("aria-expanded", open);
 }
 
-cameraBtn.addEventListener("click", () => {
-  setAreas(!camera.classList.contains("show-areas"));
+revealBtn.addEventListener("click", () => {
+  setAreas(!reveal.classList.contains("show-areas"));
 });
 
 document.addEventListener("click", (e) => {
-  if (!camera.contains(e.target)) setAreas(false);
+  if (!reveal.contains(e.target)) setAreas(false);
 });
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") setAreas(false);
 });
 
-/* Hero reveal: opens on load and again whenever you return to the top */
+/* Hero split: opens on load and again whenever you return to the top */
 const hero = document.querySelector("#hero");
 const heroTitle = document.querySelector(".hero-title");
 let firstOpen = true;
@@ -69,3 +69,23 @@ const heroObserver = new IntersectionObserver(
 );
 
 heroObserver.observe(hero);
+
+/* Gentle fade-in as sections scroll into view */
+const items = document.querySelectorAll("[data-reveal]");
+
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  items.forEach((el) => io.observe(el));
+} else {
+  items.forEach((el) => el.classList.add("in"));
+}
